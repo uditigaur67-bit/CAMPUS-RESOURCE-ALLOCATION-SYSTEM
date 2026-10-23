@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approved Bookings - Admin Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Campus Admin</h2>
+
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="resources.html">Resource Management</a></li>
+                <li><a href="requests.html">Booking Requests</a></li>
+                <li><a href="approved.html" class="active">Approved Bookings</a></li>
+                <li><a href="users.html">User Management</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <h2>Approved Bookings</h2>
+                <p>Welcome, Admin!</p>
+            </header>
+
+            <section class="content">
+
+                <h1>Approved Resource Bookings</h1>
+
+                <p>View the details of all approved campus resource bookings.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Student Name</th>
+                            <th>Resource</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>B001</td>
+                            <td>Rahul Sharma</td>
+                            <td>Seminar Hall A</td>
+                            <td>18 Oct 2026</td>
+                            <td>10 AM - 12 PM</td>
+                            <td>Project Presentation</td>
+                            <td><span class="status-approved">Approved</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>B002</td>
+                            <td>Priya Singh</td>
+                            <td>Projector 01</td>
+                            <td>19 Oct 2026</td>
+                            <td>1 PM - 2 PM</td>
+                            <td>Class Presentation</td>
+                            <td><span class="status-approved">Approved</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>B003</td>
+                            <td>Aman Verma</td>
+                            <td>Conference Room</td>
+                            <td>20 Oct 2026</td>
+                            <td>11 AM - 12 PM</td>
+                            <td>Group Discussion</td>
+                            <td><span class="status-approved">Approved</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+        </main>
+
+    </div>
+
+</body>
+</html>

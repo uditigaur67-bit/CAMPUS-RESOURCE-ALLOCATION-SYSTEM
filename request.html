@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Requests - Admin Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Campus Admin</h2>
+
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="resources.html">Resource Management</a></li>
+                <li><a href="requests.html" class="active">Booking Requests</a></li>
+                <li><a href="approved.html">Approved Bookings</a></li>
+                <li><a href="users.html">User Management</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <h2>Booking Requests</h2>
+                <p>Welcome, Admin!</p>
+            </header>
+
+            <section class="content">
+                <h1>Manage Booking Requests</h1>
+                <div class="notification-box">
+    <span class="notification-dot"></span>
+    <span>You have pending booking requests to review.</span>
+</div>
+                <div class="search-container">
+    <input
+        type="text"
+        id="bookingSearch"
+        placeholder="Search by student or resource..."
+    >
+
+    <button type="button" id="clearSearch">Clear</button>
+</div>
+
+                <p>Review student requests and approve or reject bookings.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Resource</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Rahul Sharma</td>
+                            <td>Seminar Hall A</td>
+                            <td>20 Oct 2026</td>
+                            <td>10 AM - 12 PM</td>
+                            <td>Project Presentation</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td>
+                                <button class="approve-button">Approve</button>
+                                <button class="reject-button">Reject</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Priya Singh</td>
+                            <td>Projector 01</td>
+                            <td>21 Oct 2026</td>
+                            <td>1 PM - 2 PM</td>
+                            <td>Class Presentation</td>
+                            <td><span class="status-pending">Pending</span></td
+                            <td>
+                                <button class="approve-button">Approve</button>
+                                <button class="reject-button">Reject</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Aman Verma</td>
+                            <td>Computer Lab 1</td>
+                            <td>22 Oct 2026</td>
+                            <td>11 AM - 1 PM</td>
+                            <td>Lab Practice</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td>
+                                <button class="approve-button">Approve</button>
+                                <button class="reject-button">Reject</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+        </main>
+    </div>
+<script>
+    const searchInput = document.getElementById("bookingSearch");
+    const tableRows = document.querySelectorAll("tbody tr");
+
+    searchInput.addEventListener("input", function () {
+        const searchText = searchInput.value.toLowerCase();
+
+        tableRows.forEach(function (row) {
+            const studentName = row.cells[0].textContent.toLowerCase();
+            const resourceName = row.cells[1].textContent.toLowerCase();
+
+            if (
+                studentName.includes(searchText) ||
+                resourceName.includes(searchText)
+            ) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+    const clearButton = document.getElementById("clearSearch");
+
+clearButton.addEventListener("click", function () {
+    searchInput.value = "";
+
+    tableRows.forEach(function (row) {
+        row.style.display = "";
+    });
+});
+</script>
+
+</body>
+</html>

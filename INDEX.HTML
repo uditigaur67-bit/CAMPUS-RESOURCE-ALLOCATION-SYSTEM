@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Resource Allocation - Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <h2>Campus
+                Resource
+                Allocation</h2>
+
+            <ul>
+    <li><a href="index.html" class="active">Dashboard</a></li>
+    <li><a href="resources.html">Resource Management</a></li>
+    <li><a href="request.html">Booking Request</a></li>
+    <li><a href="approve.html">Approve Bookings</a></li>
+    <li><a href="user.html">User Management</a></li>
+    <li><a href="index.html">Logout</a></li>
+</ul>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Topbar -->
+            <header class="topbar">
+                <h2>Admin Dashboard</h2>
+                <p>Welcome, Admin!</p>
+            </header>
+
+            <!-- Dashboard Content -->
+            <section class="content">
+
+                <h1>Dashboard Overview</h1>
+                <a href="resources.html" class="quick-action-button">
+    + Manage Resources
+</a>
+<a href="request.html" class="quick-action-button">
+    View Booking Requests
+</a>
+<a href="user.html" class="quick-action-button">
+    Manage Users
+</a>
+                <p>Welcome to the Campus Resource Allocation System Admin Panel.</p>
+
+                
+
+                <!-- Statistics Cards -->
+                <div class="cards">
+
+                    <div class="card">
+                        <h3>Total Resources</h3>
+                        <p>25</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Pending Requests</h3>
+                        <p>8</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Approved Bookings</h3>
+                        <p>42</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Available Resources</h3>
+                        <p>17</p>
+                    </div>
+
+                </div>
+
+                <!-- Booking Requests -->
+                <h2>Recent Booking Requests</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Resource</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Rahul</td>
+                            <td>Seminar Hall A</td>
+                            <td>25 Oct</td>
+                            <td><span class="status-pending"> Pending</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Priya</td>
+                            <td>Projector 01</td>
+                            <td>26 Oct</td>
+                            <td><span class="status-approved">Approved</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Aman</td>
+                            <td>Computer Lab 1</td>
+                            <td>27 Oct</td>
+                            <td><span class="status-pending"> Pending</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>

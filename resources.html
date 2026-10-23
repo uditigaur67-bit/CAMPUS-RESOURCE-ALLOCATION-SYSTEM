@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resource Management - Campus Allocation</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <h2>Campus Allocation</h2>
+
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="resources.html" class="active">Resource Management</a></li>
+                <li><a href="requests.html">Booking Requests</a></li>
+                <li><a href="approved.html">Approved Bookings</a></li>
+                <li><a href="users.html">User Management</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <h2>Resource Management</h2>
+                <p>Welcome, Admin!</p>
+            </header>
+
+            <section class="content">
+
+                <h1>Campus Resources</h1>
+
+                <p>View and manage the resources available on campus.</p>
+                <div class="search-container">
+    <input
+        type="text"
+        id="resourceSearch"
+        placeholder="Search by resource name or ID..."
+    >
+</div>
+
+                <td>
+    <button class="edit-button" onclick="editResource(this)">Edit</button>
+    <button class="delete-button" onclick="deleteResource(this)">Delete</button>
+</td>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Resource ID</th>
+                            <th>Resource Name</th>
+                            <th>Location</th>
+                            <th>Capacity</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>R001</td>
+                            <td>Seminar Hall A</td>
+                            <td>Block A</td>
+                            <td>100</td>
+                            <td><span class="status-active">Available</span></td>
+                            <td>
+    <button class="edit-button" onclick="editResource(this)">Edit</button>
+    <button class="delete-button" onclick="deleteResource(this)">Delete</button>
+</td>
+                        </tr>
+
+                        <tr>
+                            <td>R002</td>
+                            <td>Projector 01</td>
+                            <td>Block B</td>
+                            <td>N/A</td>
+                            <td><span class="status-active">Available</span></td>
+                             <td>
+    <button class="edit-button" onclick="editResource(this)">Edit</button>
+    <button class="delete-button" onclick="deleteResource(this)">Delete</button>
+</td>
+                        </tr>
+
+                        <tr>
+                            <td>R003</td>
+                            <td>Computer Lab 1</td>
+                            <td>Block C</td>
+                            <td>40</td>
+                            <td><span class="status-unavailable">Unavailable</span></td>
+                             <td>
+    <button class="edit-button" onclick="editResource(this)">Edit</button>
+    <button class="delete-button" onclick="deleteResource(this)">Delete</button>
+</td>
+                        </tr>
+
+                        <tr>
+                            <td>R004</td>
+                            <td>Conference Room</td>
+                            <td>Block A</td>
+                            <td>25</td>
+                            <td><span class="status-active">Available</span></td>
+                             <td>
+    <button class="edit-button" onclick="editResource(this)">Edit</button>
+    <button class="delete-button" onclick="deleteResource(this)">Delete</button>
+</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </main>
+
+    </div>
+<script>
+    const resourceSearch = document.getElementById("resourceSearch");
+    const resourceRows = document.querySelectorAll("tbody tr");
+
+    resourceSearch.addEventListener("input", function () {
+        const searchText = resourceSearch.value.toLowerCase();
+
+        resourceRows.forEach(function (row) {
+            const rowText = row.textContent.toLowerCase();
+
+            if (rowText.includes(searchText)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+    </script>
+<div id="resourceForm" class="resource-form" style="display: none;"></div>
+
+    <h2>Add New Resource</h2>
+
+    <label for="resourceName">Resource Name:</label>
+    <input type="text" id="resourceName" placeholder="Enter resource name">
+
+    <br><br>
+
+    <label for="resourceId">Resource ID:</label>
+    <input type="text" id="resourceId" placeholder="Enter resource ID">
+
+    <br><br>
+
+    <label for="resourceStatus">Status:</label>
+    <select id="resourceStatus">
+        <option value="Available">Available</option>
+        <option value="Unavailable">Unavailable</option>
+    </select>
+
+    <br><br>
+
+    <button type="button" onclick="addResource()">Save Resource</button>
+    <button type="button" onclick="hideResourceForm()">Cancel</button>
+</div>
+<script>
+function showResourceForm() {
+    document.getElementById("resourceForm").style.display = "block";
+}
+
+function hideResourceForm() {
+    document.getElementById("resourceForm").style.display = "none";
+}
+function addResource() {
+    const name = document.getElementById("resourceName").value.trim();
+    const id = document.getElementById("resourceId").value.trim();
+    const status = document.getElementById("resourceStatus").value;
+
+    if (name === "" || id === "") {
+        alert("Please enter the resource name and ID.");
+        return;
+    }
+
+    const tableBody = document.querySelector("tbody");
+    const newRow = tableBody.insertRow();
+
+    newRow.innerHTML = `
+        <td>${id}</td>
+        <td>${name}</td>
+        <td><span class="status-${status.toLowerCase()}">${status}</span></td>
+    `;
+
+    document.getElementById("resourceName").value = "";
+    document.getElementById("resourceId").value = "";
+
+    hideResourceForm();
+
+    alert("Resource added successfully!");
+}
+function deleteResource(button) {
+    const confirmDelete = confirm("Are you sure you want to delete this resource?");
+
+    if (confirmDelete) {
+        button.closest("tr").remove();
+        alert("Resource deleted successfully!");
+    }
+}
+function editResource(button) {
+    const row = button.closest("tr");
+    const cells = row.querySelectorAll("td");
+
+    const currentName = cells[1].textContent;
+
+    const newName = document.createElement("input");
+    newName.type = "text";
+    newName.value = currentName;
+    newName.style.width = "150px";
+
+    cells[1].textContent = "";
+    cells[1].appendChild(newName);
+    newName.focus();
+
+    button.textContent = "Save";
+    button.onclick = function () {
+        const updatedName = newName.value.trim();
+
+        if (updatedName === "") {
+            alert("Resource name cannot be empty.");
+            return;
+        }
+
+        cells[1].textContent = updatedName;
+        button.textContent = "Edit";
+        button.onclick = function () {
+            editResource(button);
+        };
+
+        alert("Resource updated successfully!");
+    };
+}
+</script>
+</body>
+</html>
